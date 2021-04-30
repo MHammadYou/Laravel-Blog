@@ -1,8 +1,9 @@
-<html>
-    <head>
-        <title>HOME</title>
-    </head>
-    <body>
-        <h1>Hello, World!</h1>
-    </body>
-</html>
+@extends('base')
+
+@section('block-head')
+
+@endsection
+
+@section('block-body')
+    <h1>Hola</h1>
+@endsection
