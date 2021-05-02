@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand custom-container" href="#">LARAVEL BLOG</a>
+        <a class="navbar-brand custom-container" href="/">LARAVEL BLOG</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,10 +18,10 @@
 {{--                </li>--}}
 {{--                {% else %}--}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">LOGIN</a>
+                    <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">SIGNUP</a>
+                    <a class="nav-link" href="{{ route('register') }}">SIGNUP</a>
                 </li>
 {{--                {% endif %}--}}
             </ul>
