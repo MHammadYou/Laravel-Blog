@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -15,6 +16,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('updated_at', 'DESC')->get();
+
+        
+
         $data = [
             'posts' => $posts
         ];
@@ -52,9 +56,17 @@ class PostController extends Controller
     {
         $post = Post::where('id', $id)->first();
         if ($post != null) {
-            return $post;
+
+            $userId = $post->user_id;
+            $user = User::where('id', $userId)->first();
+
+            $data = [
+                'post' => $post,
+                'user' => $user
+            ];
+            return view('posts/post', $data);
         } else {
-            echo "No such user";
+            echo "No such post";
         }
     }
 
