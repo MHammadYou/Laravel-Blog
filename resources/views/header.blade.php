@@ -6,23 +6,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
-{{--                {% if user.username %}--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">CREATE</a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">PROFILE</a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="#">LOGOUT</a>--}}
-{{--                </li>--}}
-{{--                {% else %}--}}
+
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">{{ __('LOGOUT') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                @endauth
+
+                @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">SIGNUP</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('SIGNUP') }}</a>
                 </li>
+                @endguest
 {{--                {% endif %}--}}
             </ul>
         </div>

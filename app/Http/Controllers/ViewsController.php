@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ViewsController extends Controller
 {
     public function index() {
-        return view('index');
+        return redirect('/posts');
     }
 }

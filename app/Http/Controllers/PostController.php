@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
+        $data = [
+            'posts' => $posts
+        ];
+        return view('index', $data);
     }
 
     /**
@@ -45,7 +50,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::where('id', $id)->first();
+        if ($post != null) {
+            return $post;
+        } else {
+            echo "No such user";
+        }
     }
 
     /**
