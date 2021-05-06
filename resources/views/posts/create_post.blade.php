@@ -14,7 +14,7 @@
                         {{ __('Post Title') }}
                     </label>
                     <div class="input-container">
-                        <input id="title" type="title" class="form-control" value="{{ $post->title }}" name="title" required>
+                        <input id="title" type="title" class="form-control" name="title" required>
                     </div>
                 </div>
 
@@ -23,7 +23,7 @@
                         {{ __('Post Content') }}
                     </label>
                     <div class="input-container">
-                        <textarea id="content" rows="8" type="text" value="{{ $post->content }}" class="form-control" name="content" required></textarea>
+                        <textarea id="content" rows="8" type="text" class="form-control" name="content" required></textarea>
                     </div>
                 </div>
 

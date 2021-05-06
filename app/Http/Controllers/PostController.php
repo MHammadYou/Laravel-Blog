@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Models\User;
 
 class PostController extends Controller
 {
@@ -98,7 +97,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::where('id', $id)->first();
+
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+
+        $post->save();
+        return redirect('/posts')->with('message', 'Post has been updated');
     }
 
     /**
@@ -109,6 +114,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::where('id', $id)->first();
+        $post->delete();
+
+        return redirect('/posts')->with('message', 'Post has been deleted');
     }
 }

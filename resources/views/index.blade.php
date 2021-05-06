@@ -14,9 +14,16 @@
                 <div class="">
                     <div class="author-name">{{ __(ucwords($post->user->name)) }}</div>
                     <small class="text-muted">{{ __($post->user->email) }}</small>
-                    @if (isset(Auth::user()->id) && Auth::user()->id == $post->user->id)
-                        <a href="/posts/{{$post->id}}/edit">Edit</a>
-                    @endif
+                    <span style="float:right;">
+                        @if (isset(Auth::user()->id) && Auth::user()->id == $post->user->id)
+                            <a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a>
+                            <form action="/posts/{{$post->id}}" method="post" style="display: inline">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        @endif
+                    </span>
                 </div>
             </div>
             @endforeach

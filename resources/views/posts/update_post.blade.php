@@ -6,8 +6,9 @@
         <div class="row mt-5">
             <div class="col-sm-8 card p-3">
                 <h3 class="card-title">{{ __('Update Post') }}</h3>
-                <form method="POST" action="/posts">
+                <form method="POST" action="/posts/{{ $post->id }}">
                     @csrf
+                    @method('PUT')
 
                     <div class="form-group">
                         <label class="requiredField">
