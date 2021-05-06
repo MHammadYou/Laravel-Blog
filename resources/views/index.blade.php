@@ -11,9 +11,9 @@
             <div class="col-sm-8 card p-3 mt-3">
                 <h4 class="card-title">{{ __($post->title) }}</h4>
                 <p>{{ $post->content }}</p>
-                <div class="mt-2">
-                    <div class="author-name">{{ __(ucwords($user->name)) }}</div>
-                    <small class="text-muted">{{ __($user->email) }}</small>
+                <div class="">
+                    <div class="author-name">{{ __(ucwords($post->user->name)) }}</div>
+                    <small class="text-muted">{{ __($post->user->email) }}</small>
                 </div>
             </div>
             @endforeach

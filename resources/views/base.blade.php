@@ -15,7 +15,18 @@
 </head>
 <body>
     @include('header')
+
     <div class="container">
+
+        @if (session()->has('message'))
+            <div class="row">
+                <div class="row-cols-8" style="font-size: 22px">
+                    <div class="text-secondary font-weight-bold">
+                        {{ session()->get('message') }}
+                    </div>
+                </div>
+            </div>
+        @endif
         @yield('block-body')
     </div>
 </body>

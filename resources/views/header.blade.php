@@ -8,6 +8,11 @@
             <ul class="navbar-nav mr-auto">
 
                 @auth
+                    @if ( Auth::check() )
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('posts.create') }}">{{ __('CREATE') }}</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">{{ __('LOGOUT') }}</a>

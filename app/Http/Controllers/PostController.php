@@ -15,9 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('updated_at', 'DESC')->get();
-
-        
+        $posts = Post::orderBy('id', 'DESC')->get();
 
         $data = [
             'posts' => $posts
@@ -32,7 +30,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
+        if (!auth()->check()) {
+            return redirect('/login')->with('message', 'Please Login to create the post');
+        }
+
+        return view('posts.create_post');
     }
 
     /**
@@ -43,7 +46,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+        $slug = str_replace(' ', '-', $request->input('title'));
+
+        Post::create([
+            'slug' => $slug,
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect('/posts')->with('message', 'Post has been created');
     }
 
     /**
@@ -57,12 +72,8 @@ class PostController extends Controller
         $post = Post::where('id', $id)->first();
         if ($post != null) {
 
-            $userId = $post->user_id;
-            $user = User::where('id', $userId)->first();
-
             $data = [
                 'post' => $post,
-                'user' => $user
             ];
             return view('posts/post', $data);
         } else {
