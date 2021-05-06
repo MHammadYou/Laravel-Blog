@@ -46,9 +46,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
         $slug = str_replace(' ', '-', $request->input('title'));
 
         Post::create([
@@ -89,7 +86,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('posts.update_post')->with('post', Post::where('id', $id)->first());
     }
 
     /**

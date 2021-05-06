@@ -14,6 +14,9 @@
                 <div class="">
                     <div class="author-name">{{ __(ucwords($post->user->name)) }}</div>
                     <small class="text-muted">{{ __($post->user->email) }}</small>
+                    @if (isset(Auth::user()->id) && Auth::user()->id == $post->user->id)
+                        <a href="/posts/{{$post->id}}/edit">Edit</a>
+                    @endif
                 </div>
             </div>
             @endforeach
