@@ -1,1 +1,1 @@
-Simple Laravel Blog application
+**Simple Laravel Blog application**
